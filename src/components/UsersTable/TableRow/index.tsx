@@ -54,7 +54,7 @@ export const CustomTableRow = ({ user, changeUserStatus }: TableRowProps) => {
             </StyledTableCell>
             <StyledTableCell align='center'>{user.name}</StyledTableCell>
             <StyledTableCell align='center'>
-                {user.status ? 'Active' : 'Disabled'}
+                {user.status ? 'Active' : 'Inactive'}
             </StyledTableCell>
             <StyledTableCell align='center'>
                 <Switch
