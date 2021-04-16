@@ -16,16 +16,7 @@ type TableRowProps = {
 }
 
 export const CustomTableRow = ({ user, changeUserStatus }: TableRowProps) => {
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          setTimeLeft(calculateTimeLeft());
-        }, 1000);
-        return () => clearTimeout(timer);
-      });
-
-    function calculateTimeLeft() {
+    const calculateTimeLeft = () => {
         let difference =  +moment() - +moment(user.time);
 
         let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -42,6 +33,16 @@ export const CustomTableRow = ({ user, changeUserStatus }: TableRowProps) => {
       return timeLeft;
     
     }
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setTimeLeft(calculateTimeLeft());
+        }, 1000);
+        return () => clearTimeout(timer);
+    });
+
+    
 
     return (
         <TableRow>
